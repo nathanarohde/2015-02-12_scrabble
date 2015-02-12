@@ -1,5 +1,7 @@
 var wordOrder = function(input_string) {
-  var input_split_into_array = input_string.split(' ')
+  var lowercase_input_string = input_string.toLowerCase();
+  var final_input_string =lowercase_input_string.replace(/[^a-z0-9]/gmi, " ");
+  var input_split_into_array = final_input_string.split(' ');
   var words_list = [ ];
 
   input_split_into_array.forEach(function(input_word) {
@@ -31,3 +33,18 @@ var wordOrder = function(input_string) {
 
   return words_list;
 };
+
+$(document).ready(function(event) {
+  $('form#string_input_form').submit(function(event) {
+    var input = ($('input#string_input').val());
+    var output_array = wordOrder(input);
+
+    $.each (output_array, function( index, word_number_pair) {
+         $('#result .output').append("<li><h4>"+(word_number_pair[0])+"</h4></li>");
+      });
+
+    $('#result').show();
+    event.preventDefault();
+
+  });
+});
