@@ -39,6 +39,8 @@ $(document).ready(function(event) {
     var input = ($('input#string_input').val());
     var output_array = wordOrder(input);
 
+    $('#result .output').empty();
+
     $.each (output_array, function( index, word_number_pair) {
          $('#result .output').append("<li><h4>"+(word_number_pair[0])+"</h4></li>");
       });
