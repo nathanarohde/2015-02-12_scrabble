@@ -1,23 +1,17 @@
-describe('wordOrder', function() {
-  it('looks at a string returns an array with a word and a numeric value.', function() {
-    expect(wordOrder('one')).to.eql( [['one', 1]]);
+describe('scrabble', function() {
+  it('takes a string and outputs a score', function() {
+    expect(scrabble('a')).to.equal(1);
   });
-  it('looks at a string returns an array with a lowercase word and a numeric value.', function() {
-    expect(wordOrder('ONE')).to.eql( [['one', 1]]);
+  it('takes a string, makes it lowercase and outputs a score', function() {
+    expect(scrabble('A')).to.equal(1);
   });
-  it('removes all non alphanumeric values from a string.', function() {
-    expect(wordOrder('^.oNe#%')).to.eql( [['one', 1]]);
+  it('takes a string compares it to a hash and outputs a score', function() {
+    expect(scrabble('e')).to.equal(1);
   });
-  it('looks at a string and returns an array with the number of times a word appears', function() {
-    expect(wordOrder('one one one')).to.eql([['one', 3]]);
+  it('takes several letters and returns a score', function() {
+    expect(scrabble('ae')).to.equal(2);
   });
-  it('looks at a string and returns an array with the number of times multiple words appear', function() {
-    expect(wordOrder('one one one three three')).to.eql([['one', 3], ['three', 2]]);
-  });
-  it('looks at a string and returns an array with the number of times multiple words appear and sorts them by the number of times they appear', function() {
-    expect(wordOrder('one one one two three three')).to.eql([['one', 3], ['three', 2], ['two', 1]]);
-  });
-  it('looks at a string and returns an array with the number of times multiple words appear and sorts them by the number of times they appear, and then order of appearance if frequency is the same.', function() {
-    expect(wordOrder('one one one two three three four')).to.eql([['one', 3], ['three', 2], ['two', 1], ['four', 1]]);
+  it('checks to see if all key values have been correctly entered by checking their cumlative value', function() {
+    expect(scrabble('abcdefghijklmnopqrstuvwxyz')).to.equal(87);
   });
 });
